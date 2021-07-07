@@ -32,11 +32,12 @@
 # colors = 1,2,3
 # print(colors)
 
-# a = [('one', 1), ('two', 2)]
+a = [('one', 1), ('two', 2)]
 # print(a)
-# newdict = dict(a)
+newdict = dict(a)
 # print(newdict)
 # newdict(one) = 3
 # print(newdict)
 
-print(filter(, [1,2,3]))
+for i in newdict.values():
+    print(i)
