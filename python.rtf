@@ -78,6 +78,8 @@
 		- lists are like arrays\
 		# x = []\
 		# x = list() - preferable\
+		# list comprehension\
+			# x = [i for i in sentence if is_consonant(i)]\
 	## tuple\
 		- tuples are immutable lists\
 		- tuples are made without using any enclosures\
@@ -104,6 +106,8 @@
 		- creates a new iterable of the same type which includes each item for which function 		  returns true\
 	## map(function, iterable)\
 		- creates a new iterable of the same type which includes the result of calling the function 		on every item in the iterable\
+		# ex. sqs = map(lambda x: x**2, range(2))\
+			list(sqs)\
 	## sorted(iterable, key=None, reverse=False)\
 		- creates a new sorted list from the items in the iterable\
 	## enumerate(iterable, start=0)\
@@ -128,7 +132,43 @@
 		# from <package> import <module>, <module>\
 		# from <package> import <function>\
 		# from <package> import <module> as <altName>\
+## classes\
+	- each method needs self as the first argument\
+	- use one leading underscore when naming class variables\
+	- use __slots__ to set an array of class variables to be used for Python to work faster\
+	- use __repr__ to make return of class instance prettier\
+	- inheritance\
+		- use more general class as argument for more specific class\
+		- in __init__ method, use the super().__init__ method\
+	- getter method\
+		- use @property on the line before the getter method\
+	- setter method\
+		- use @<variable_name>.setter before the setter method\
+	# ex. class Employee:\
+		__slots__ = [\'91_id\'92]\
 \
+		def __init__(self, id):\
+			self._id = id\
+\
+		@property\
+		def id(self):\
+			return self._id\
+	\
+		@id.setter\
+		def id(self, value):\
+			if value > 0\
+				value = 0\
+			self._id = value\
+			return self._id\
+		\
+		def __repr__(self):\
+			return f\'94<Employee (\{self._id\})>\'94\
+\
+	          class Manager(Employee):\
+		def __init__(self, id):\
+			super().__init__(id)\
+			self.empoyees = []\
+	\
 \
 \
 \
