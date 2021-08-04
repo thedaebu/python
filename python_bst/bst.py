@@ -40,13 +40,13 @@ class BinarySearchTree:
   def search_recursively(self, value, current_node=False):
     if current_node is False:
       current_node = self._root
-
+    
     if current_node is None:
       return False
 
     if value < current_node._value:
       return self.search_recursively(value, current_node._left)
-    elif value < current_node._value:
+    elif value > current_node._value:
       return self.search_recursively(value, current_node._right)
     else:
       return True
