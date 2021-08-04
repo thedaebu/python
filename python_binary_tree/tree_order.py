@@ -9,12 +9,14 @@ def in_order_traversal(root=None):
   5. Return the left list values concatenated with the root value, concatenated
      with the right list values.
   """
-  if root is None:
-    return list()
-
+  if root is None: return list()
   left = in_order_traversal(root.left)
   right = in_order_traversal(root.right)
-  return left + [root.value] + right
+  final = list()
+  final.extend(left)
+  final.extend([root.value])
+  final.extend(right)
+  return final
 
 def post_order_traversal(root=None):
   """
@@ -25,9 +27,7 @@ def post_order_traversal(root=None):
   5. Return the left list values concatenated with the right list values,
       concatenated with the root value.
   """
-  if root is None: 
-    return list()
-
+  if root is None: return list()
   left = post_order_traversal(root.left)
   right = post_order_traversal(root.right)
   final = list()
