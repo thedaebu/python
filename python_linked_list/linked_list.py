@@ -117,7 +117,7 @@ class LinkedList:
 
   # TODO: Implement the contains_value method here
   def contains_value(self, target):
-    
+    pass
 
   # TODO: Implement the insert_value method here
   def insert_value(self, position, value):
