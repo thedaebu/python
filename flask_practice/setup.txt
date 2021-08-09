@@ -1,0 +1,2 @@
+export FLASK_APP=simple.py
+pipenv run flask run
