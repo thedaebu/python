@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Sample App - {{ sitename }}</title>
+</head>
+
+{% if not logged_in %}
+    <a href="/login">Log in |</a>
+{% endif %}
+
+<body>
+    {% include 'nav.html' %}
+    <h1>The name is {{sitename}}</h1>
+    <h2>Home Page</h2>
+    <p>Coming soon to a browser near you...</p>
+</body>
+
+</html>
