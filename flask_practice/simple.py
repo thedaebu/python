@@ -1,0 +1,25 @@
+from flask import Flask
+from config import Config
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+@app.before_request
+def before_request_function():
+    print("before_request is running")
+
+@app.after_request
+def after_request_function():
+    print("after_request is running")
+
+@app.route("/")
+def dude():
+    return f'<p>{app.config["SECRET_KEY"]}</p><p>{str(__name__)}.py</p>'
+
+@app.route("/about")
+def about():
+    return '<p>This is the about page</p>'
+
+@app.route("/about/<id>")
+def wild_card(id):
+    return f'<p>welcome to page {id}</p>'

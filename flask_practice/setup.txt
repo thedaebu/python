@@ -1,2 +1,9 @@
+pipenv install Flask~=1.1
+pipenv install python-dotenv~=0.13
+
+
+
 export FLASK_APP=simple.py
+export FLASK_ENV=development
 pipenv run flask run
+pipenv run flask run -p 5001
