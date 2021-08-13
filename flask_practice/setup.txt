@@ -1,6 +1,7 @@
 pipenv install Flask~=1.1
 pipenv install python-dotenv~=0.13
 pipenv install Jinja2~=2.11
+pipenv install Flask-WTF~=0.14
 
 
 export FLASK_APP=simple.py
