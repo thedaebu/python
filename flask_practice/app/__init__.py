@@ -1,5 +1,6 @@
 from flask import (Flask, render_template)
 from config import Config
+from app.sample_form import SampleForm
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -16,6 +17,11 @@ app.config.from_object(Config)
 def dude():
     # return f'<p>{app.config["SECRET_KEY"]}</p><p>{str(__name__)}.py</p>'
     return render_template('index.html', sitename = "TheDaeBu")
+
+@app.route("/form")
+def form():
+    form = SampleForm()
+    return render_template('form.html', form=form)
 
 @app.route("/about")
 def about():

@@ -1,2 +1,3 @@
-FLASK_APP=app/__init__.py
+FLASK_APP=app
 FLASK_ENV=development
+SECRET_KEY=super-secret-stuff

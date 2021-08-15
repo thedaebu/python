@@ -3,8 +3,23 @@ pipenv install python-dotenv~=0.13
 pipenv install Jinja2~=2.11
 pipenv install Flask-WTF~=0.14
 
+pipenv install Flask psycopg2-binary Flask-WTF python-dotenv \
+       --python "$PYENV_ROOT/versions/3.8.2/bin/python"
+pipenv shell  
+pipenv install --dev pylint **for no linters**
 
 export FLASK_APP=simple.py
 export FLASK_ENV=development
 pipenv run flask run
 pipenv run flask run -p 5001
+
+**__init__.py**
+from flask import (Flask, render_template)
+from config import Config
+from app.sample_form import SampleForm
+app = Flask(__name__)
+app.config.from_object(Config)
+
+**wtforms**
+from flask_wtf import FlaskForm
+from wtforms import StringField
