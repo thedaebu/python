@@ -14,7 +14,7 @@ pipenv run flask run
 pipenv run flask run -p 5001
 
 **__init__.py**
-from flask import (Flask, render_template)
+from flask import (Flask, render_template, redirect)
 from config import Config
 from app.sample_form import SampleForm
 app = Flask(__name__)
