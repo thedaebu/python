@@ -149,3 +149,4 @@ def avg(nums):
 
 data = [[10,2,3], [10,4,4], [4,2,3], [10,1,1]]
 data = sorted(data, key=avg) # function can be used as key as long as argument data type matches list item data type
+
