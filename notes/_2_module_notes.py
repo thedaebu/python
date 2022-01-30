@@ -12,8 +12,8 @@ math # => 3
 m # => math module 
 
 ## importing created modules
-import modules.utils as utils
-print(utils.max_diff([5,4,1,6]))
+import modules.utils as utils # from utils file from modules directory
+utils.max_diff([5,4,1,6])
 
 ## sys.modules and changing module paths
 import sys # module to configure interpreter
