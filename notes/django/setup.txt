@@ -1,0 +1,33 @@
+## virtual environment in root directory
+sudo pip install virtualenv
+source env/bin/activate  # activates virtual environment
+deactivate
+
+## first go into project directory
+django-admin startproject <directory name>  # creates server template
+python manage.py runserver  # starts running server
+python manage.py startapp <directory name>  # creates app template
+
+## steps
+1. create urls.py in app directory for url paths
+2. create views according to url in views.py
+3. add url paths into urls.py in project directory
+4. add app to installed_apps in settings.py
+5. create a model
+6. make migrations
+7. migrate the migrations
+
+python manage.py migrate  # executes all migrations
+python manage.py makemigrations  # creates migrations for all models
+
+## interacting with database
+python manage.py shell
+# import the class from models.py
+<variable>.save()  # saves object to database
+<model>.objects.all()  # fetches all objects of said model
+<model>.objects.get(<key>=?)  # fetches object according to given search key
+
+## views
+1. render in views
+2. set app_name variable in views.py in app directory
+2. link has special format for page in html => "{% url '<app_name>:<name of url path in urls.py> <whatever parameters> %}"

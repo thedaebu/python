@@ -1,0 +1,8 @@
+{{ books }}
+<ul>
+    {% for book in books %}
+    <li>
+        <a href="{% url 'reading:info' book.id %}">{{book.title}} is {{book.pages}} pages long.</a>  
+    </li>
+    {% endfor %} 
+</ul>
