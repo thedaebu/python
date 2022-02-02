@@ -203,13 +203,13 @@ class LinkedList:
 
 # Phase 2 Manual Testing
 
-# # 1. Test whether the list contains_value a value
+# 1. Test whether the list contains_value a value
 linked_list = LinkedList()
 linked_list.add_to_head('new head node')
 print(linked_list.contains_value('new head node'))      # True
 print(linked_list.contains_value('App Academy node'))   # False
 
-# # 2. Test inserting a node value into the list at a specific position
+# 2. Test inserting a node value into the list at a specific position
 linked_list.insert_value(0, 'hello!')
 print(linked_list.get_node(0)._value)                   # `hello!`
 
