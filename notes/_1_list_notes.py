@@ -8,7 +8,7 @@ healthy.append('oatmeal')
 ## removing from list
 healthy.remove('oatmeal')
 
-## list comprehenstion
+## list comprehension
 healthy = ['kale', 'broccoli', 'blueberry']
 backpack = ['pizza', 'custard', 'crisp', 'kale', 'kale']
 backpack[:] = [item for item in backpack if item in healthy]
@@ -37,8 +37,9 @@ count = backpack.count('kale') # => 2
 backpack2 = {'pizza', 'kale'} # only includes unique items
 
 ## counting with list comprehension
-counts = [backpack.count(item) for item in backpack]
-counts = [[backpack.count(item), item] for item in set(backpack)] # turns backpack list into a set so that each item only is added once
+backpack = ['kale', 'custard', 'crisp', 'kale', 'kale']
+counts = [backpack.count(item) for item in backpack] # => [3,1,1,3,3]
+counts = [[backpack.count(item), item] for item in set(backpack)] #  => [[3, 'kale'], [1, 'custard'], [1, 'crisp']] turns backpack list into a set so that each item only is added once
 
 ## counting with Counter
 from collections import Counter

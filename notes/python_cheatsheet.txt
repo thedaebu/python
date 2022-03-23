@@ -1,0 +1,50 @@
+## boolean operators
+# not
+    put before conditional
+# is
+# and
+# or
+
+## lists
+# list.append(item)
+# list.insert(index, item)
+# list.remove(item)
+# list.pop(index)
+    can be set to a variable
+# del list[index]
+# sorted(list) and list.sort(key=)
+    key can be varied and can also be a method as long as method variable data type matches those in the list
+# list(dictionary.items())/list(set)
+    turns dictionary or set into list
+
+## dictionaries    
+# dictionary.items()
+    give key-value pairs in tuple form
+# dictionary.update(other_dictionary)
+    overwrites then combines dictionaries
+# del dictionary[dictionary_key]
+
+## sets
+# set.add(item)
+# item in set
+    checks if item is in set
+# set(list)
+    turns list into set
+# set1 | set2
+    combines all items
+# set1 & set2
+    combines common items
+# set1.intersection(set2)
+    combines uncommon items
+
+## tuple
+# tuple(list)
+    turns list into tuple
+# item in tuple
+    checks if item is in tuple
+
+## built-in functions
+# len()
+# .index(value)
+# .count(value)
+# .format(argument1, argument2, etc.)
