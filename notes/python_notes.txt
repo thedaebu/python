@@ -1,81 +1,117 @@
+## access to attributes and methods according to data type
+# dir(variableName)
+# help(dataType)
+
+## lists
+# list.append(item)
+# list.extend(list2) - concats
+# sorted(list) and list.sort(key=)
+# list(dataType) - dictionary.items(), set, tuple
+# (string).join(list)
+# list.split(string)
+
+## dictionaries
+# dictionary.keys()
+# dictionary.values()
+
+## sets
+# set.add(item)
+# set.remove(item)
+# set(dataType) - list, tuple
+
+## tuple
+# tuple(dataType) - list, set
+
+## loops
+# for
+	# range()
+	# enumerate(list) = index, item
+	# dictionary.items() = key, value
+
+## multiple
+# str(int)/int(str)
+# .index(dataType) - string, list, tuple
+# .pop(date_type) - list, dictionary
+# item in dataType - list, tuple, dictionary, set
+
 ## pass
 	- must be used in place of the absence of code
 	# ex. 
 		if True:
 			pass
+
 ## None
 	- the value used to signify the absence of a value
-## format
-	- based on arguments	
-		- used in place of interpolating
-		# ex. 'Hello {0} {1}.'.format('my', 'dude') => 'Hello my dude.'
-	- for commas for numbers
-		# ex. '{:,}'.join(12345) => '12,345'
+
 ## built-in functions
-	## filter(function, iterable)
-		- creates a new iterable of the same type which includes each item for which function 		  returns true
-	## map(function, iterable)
-		- creates a new iterable of the same type which includes the result of calling the function 		on every item in the iterable
-		# ex. sqs = map(lambda x: x**2, range(2))
-			list(sqs)
-	## sorted(iterable, key=None, reverse=False)
-		- creates a new sorted list from the items in the iterable
-	## enumerate(iterable, start=0)
-		- starts with a sequence and converts it into a series of tuples
-		- each tuple is made up of an index and value
-	## zip(*iterables)
-		- creates a zip object filled with tuples that combine 1-to-1 the items in each provided 		iterable
+# filter(function, iterable)
+	- creates a new iterable of the same type which includes each item for which function 		  returns true
+# map(function, iterable)
+	- creates a new iterable of the same type which includes the result of calling the function 		on every item in the iterable
+	# ex. sqs = map(lambda x: x**2, range(2))
+		list(sqs)
+# zip(*iterables)
+	- creates a zip object filled with tuples that combine 1-to-1 the items in each provided 		iterable
+
 ## function arguments
-	## *args
-		- used for arguments not part of a variable
-	## **kwargs
-		- keyword arguments
-		- arguments used as key-value pairs
+- used when unsure of input arguments
+# *args
+	- used for non-dictionary type arguments
+# **kwargs
+	- used for dictionary type arguments
+# def something(*args, **kwargs):
+# something(*args, **kwargs)/something(arg1, arg2, key1=value1, key2=value2)
+
 ## importing in Python
-	- module is Python code in a separate file
-	- package is the path to a directory that contains modules
-	- __ini__.py is the default package for a package
-	- submodule is a file in a module's folder
-	# import statements
-		# import <module>
-		# import <package>.<subpackage>.<module>
-		# from <package> import <module>, <module>
-		# from <package> import <function>
-		# from <package> import <module> as <altName>
-## classes
-	- each method needs self as the first argument
-	- use one leading underscore when naming class variables
-	- use __slots__ to set an array of class variables to be used for Python to work faster
-	- use __repr__ to make return of class instance prettier
-	- inheritance
-		- use more general class as argument for more specific class
-		- in __init__ method, use the super().__init__ method
-	- getter method
-		- use @property on the line before the getter method
-	- setter method
-		- use @<variable_name>.setter before the setter method
-	# ex. class Employee:
-		__slots__ = ['_id']
-
-		def __init__(self, id):
-			self._id = id
-
-		@property
-		def id(self):
-			return self._id
+- module is Python code in a separate file
+- package is a directory that contains modules
+- subpackage is nested package
+- __ini__.py is the default package for a package
+# import statements
+	# import module/module as newName
+	# from module import modulePart/modulePart as newModulePartName
+	# import package.subpackage.module
+	# from package import module, module
+	# from package import function
+	# from package import module as newName
+# path
+	# import sys
+	# sys.path()
 	
-		@id.setter
-		def id(self, value):
-			if value > 0
-				value = 0
-			self._id = value
-			return self._id
-		
-		def __repr__(self):
-			return f'<Employee ({self._id})>'
+## classes
+- each method needs self as the first argument
+- use one leading underscore when naming class variables
+- use __slots__ to set an array of class variables to be used for Python to work faster
+- use __repr__ to make return of class instance prettier
+- inheritance
+	- use more general class as argument for more specific class
+	- in __init__ method, use the super().__init__ method
+- getter method
+	- use @property on the line before the getter method
+- setter method
+	- use @variableName.setter before the setter method
+# ex. class Employee:
+	__slots__ = ['_id']
 
-	    class Manager(Employee):
-		def __init__(self, id):
-			super().__init__(id)
-			self.empoyees = []
-		}
+	def __init__(self, id):
+		self._id = id
+
+	@property
+	def id(self):
+		return self._id
+
+	@id.setter
+	def id(self, value):
+		if value  0
+			value = 0
+		self._id = value
+		return self._id
+	
+	def __repr__(self):
+		return f'Employee ({self._id})'
+
+	class Manager(Employee):
+	def __init__(self, id):
+		super().__init__(id)
+		self.empoyees = []
+	}
