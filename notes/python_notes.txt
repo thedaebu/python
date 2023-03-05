@@ -34,12 +34,6 @@
 # .pop(date_type) - list, dictionary
 # item in dataType - list, tuple, dictionary, set
 
-## pass
-	- must be used in place of the absence of code
-	# ex. 
-		if True:
-			pass
-
 ## None
 	- the value used to signify the absence of a value
 

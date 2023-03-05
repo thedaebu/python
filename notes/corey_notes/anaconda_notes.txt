@@ -1,0 +1,10 @@
+## commands
+# conda list
+    - list of installed packages for conda
+# conda env list
+    - list of created virtualenvs
+# conda create --name virtualenv_name package_name
+    - creates virtualenv folder
+# conda remove --name virtualenv_name --all
+# conda activate virtualenv_name
+# conda deactivate

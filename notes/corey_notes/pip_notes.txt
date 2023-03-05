@@ -1,0 +1,3 @@
+## commands
+# pip list
+# pip install package_name
