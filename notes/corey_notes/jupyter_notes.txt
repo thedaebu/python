@@ -1,0 +1,13 @@
+## commands
+# jupyter notebook
+# :command
+    - denotes bash command
+
+## magic
+# %lsmagic
+    - displays magic commands that cna be used in jupyter
+# %%timeit
+
+## matplotlib
+# %matplotlib inline
+    - displays chart within notebook
