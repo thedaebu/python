@@ -1,3 +1,6 @@
+## anaconda
+- anaconda is a python package manager for packages outside of python
+
 ## commands
 # conda list
     - list of installed packages for conda
