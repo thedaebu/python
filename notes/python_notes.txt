@@ -6,7 +6,7 @@
 # list.append(item)
 # list.extend(list2) - concats
 # sorted(list) and list.sort(key=)
-# list(dataType) - dictionary.items(), set, tuple
+# list(dataType) - dictionary.items(), set, tuple, generator
 # (string).join(list)
 # list.split(string)
 
@@ -22,30 +22,35 @@
 ## tuple
 # tuple(dataType) - list, set
 
+## generator
+# yield/next()
+
 ## loops
 # for
 	# range()
 	# enumerate(list) = index, item
 	# dictionary.items() = key, value
+	# zip(list1, list2) = (item1, item2)
 
-## multiple
+## comprehension
+# list
+	# [item for item in list if conditional]
+# dictionary
+	# {key: value for key, value in zip(keys, values)}
+# set
+	# {item for item in list}
+# generator
+	# (item for item in list)
+
+## methods for multiple data types
 # str(int)/int(str)
+# sorted(dataType) - list, dictionary
 # .index(dataType) - string, list, tuple
-# .pop(date_type) - list, dictionary
+# .pop(dateType) - list, dictionary
 # item in dataType - list, tuple, dictionary, set
 
 ## None
-	- the value used to signify the absence of a value
-
-## built-in functions
-# filter(function, iterable)
-	- creates a new iterable of the same type which includes each item for which function 		  returns true
-# map(function, iterable)
-	- creates a new iterable of the same type which includes the result of calling the function 		on every item in the iterable
-	# ex. sqs = map(lambda x: x**2, range(2))
-		list(sqs)
-# zip(*iterables)
-	- creates a zip object filled with tuples that combine 1-to-1 the items in each provided 		iterable
+- the value used to signify the absence of a value
 
 ## function arguments
 - used when unsure of input arguments
@@ -55,6 +60,11 @@
 	- used for dictionary type arguments
 # def something(*args, **kwargs):
 # something(*args, **kwargs)/something(arg1, arg2, key1=value1, key2=value2)
+
+## modules
+# from operator import attrgetter
+	# attrgetter('attrName')
+	- obtains value of class object according to attribute name
 
 ## importing in Python
 - module is Python code in a separate file
@@ -69,43 +79,12 @@
 	# from package import function
 	# from package import module as newName
 # path
-	# import sys
-	# sys.path()
-	
-## classes
-- each method needs self as the first argument
-- use one leading underscore when naming class variables
-- use __slots__ to set an array of class variables to be used for Python to work faster
-- use __repr__ to make return of class instance prettier
-- inheritance
-	- use more general class as argument for more specific class
-	- in __init__ method, use the super().__init__ method
-- getter method
-	- use @property on the line before the getter method
-- setter method
-	- use @variableName.setter before the setter method
-# ex. class Employee:
-	__slots__ = ['_id']
+	# import os
+	  cur_path = os.path.dirname(__file__)
+	  new_path = os.path.relpath('<file with relative path to file>', cur_path)
+	#
 
-	def __init__(self, id):
-		self._id = id
-
-	@property
-	def id(self):
-		return self._id
-
-	@id.setter
-	def id(self, value):
-		if value  0
-			value = 0
-		self._id = value
-		return self._id
-	
-	def __repr__(self):
-		return f'Employee ({self._id})'
-
-	class Manager(Employee):
-	def __init__(self, id):
-		super().__init__(id)
-		self.empoyees = []
-	}
+## duck typing and EAFP
+- duck typing is the concept that the type of an object is irrelevant and only
+  the attributes of the object matter
+- EAFP is using try/except blocks instead of if/else blocks
