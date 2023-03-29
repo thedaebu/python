@@ -84,6 +84,11 @@
 	  new_path = os.path.relpath('<file with relative path to file>', cur_path)
 	#
 
+## fetching from API
+# from urlllib.request import urlopen
+# with urlopen('api') as response:
+# 	source = response.read()
+
 ## duck typing and EAFP
 - duck typing is the concept that the type of an object is irrelevant and only
   the attributes of the object matter
