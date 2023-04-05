@@ -72,6 +72,7 @@
 - subpackage is nested package
 - __ini__.py is the default package for a package
 # import statements
+	- module is file name, package is directory
 	# import module/module as newName
 	# from module import modulePart/modulePart as newModulePartName
 	# import package.subpackage.module
@@ -88,6 +89,15 @@
 # from urlllib.request import urlopen
 # with urlopen('api') as response:
 # 	source = response.read()
+
+## self/cls
+# self is used as name of first argument for instance methods
+# cls is used as name of first argument for class methods
+
+## __name__
+# __name__ is a hidden variable created within each python file
+# when __name__ is fetched in root file, '__main__' is returned
+# when __name__ is fetched in imported file, file name is returned
 
 ## duck typing and EAFP
 - duck typing is the concept that the type of an object is irrelevant and only

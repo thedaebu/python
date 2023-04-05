@@ -1,0 +1,23 @@
+### reference pipenv_practice_project
+
+## commands
+# pipenv install
+    - installs everything in Pipfile
+# pipenv install/uninstall requests
+    - .venv directory includes virtual environment
+    - Pipfile is a file that describes environment
+# pipenv shell - runs virtual environment
+# pipenv run - command beginning when inside virtual environment
+# pipenv --python <version number>
+    - first change the version in Pipfile
+    - then run command with corresponding version number
+# pipenv lock
+    - updates Pipfile.lock with correct dependencies
+# pipenv install --ignore-pipfile
+    - creates environment from Pipfile.lock instead of Pipfile
+- create environment variables
+    - create .env file in project directory
+    - add variables ex. SECRET_KEY="SECRET_KEY"
+    - when virtual environment is accessed, .env file will be searched
+    # import os
+    # os.environ[variable] ex. os.environ[SECRET_KEY]
