@@ -1,0 +1,31 @@
+## commands
+# export FLASK_APP=filename
+    - sets environment variable to reference flask app file
+# flask run
+    - runs flask app server according to FLASK_APP variable
+- adding and displaying changes to app without having to restart server
+    - in python file
+        # if __name__ == '__main__':
+            app.run(debug=True)
+        # python filename.py
+    - in terminal
+        # export FLASK_DEBUG=1   
+        # flask run
+
+## templates
+# from flask import render_template
+- create templates folder that stores all html templates
+# render_template('filename', key=value)
+    - arguments of filename and key-value pairs to be used in html
+- using python code in html templates
+    - use end keyword at end of python code
+    # {% for data in dataset %}
+        {{ data['data1'] }}
+      {% endfor %}
+- inheriting
+    - specifying block content
+        # {% block content %}
+        {% endblock content %}
+    - extending html
+        # {% extends "filename.html" %}
+    

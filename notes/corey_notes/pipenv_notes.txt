@@ -20,4 +20,4 @@
     - add variables ex. SECRET_KEY="SECRET_KEY"
     - when virtual environment is accessed, .env file will be searched
     # import os
-    # os.environ[variable] ex. os.environ[SECRET_KEY]
+    # os.environ['variable'] ex. os.environ['SECRET_KEY']

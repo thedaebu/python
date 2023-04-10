@@ -23,7 +23,7 @@
 # tuple(dataType) - list, set
 
 ## generator
-# yield/next()
+# yield/next(generator)
 
 ## loops
 # for
