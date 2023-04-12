@@ -28,4 +28,3 @@
         {% endblock content %}
     - extending html
         # {% extends "filename.html" %}
-    
