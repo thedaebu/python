@@ -1,14 +1,20 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 # configure flask app
 app = Flask(__name__)
-
 app.config['SECRET_KEY'] = 'd6753ab27f50e1f2c49228a7aebb4fc7'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_database.db'
-
 # configure database for flask app
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+# establishes redirect route for routes that have login_required decorator and when not logged in
+login_manager.login_view = 'login'
+# establishes message for login_view redirect
+login_manager.login_message_category = 'info'
 
 from flask_practice_app import routes
 
@@ -28,5 +34,7 @@ from flask_practice_app import routes
     ## queries by ID
     # User.query.get(1)
     # User.posts
+    ## delete method for db item
+    # db.session.delete(User.query.first())
     ## deletes database
     # db.drop_all()

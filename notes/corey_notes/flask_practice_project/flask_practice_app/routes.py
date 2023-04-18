@@ -1,7 +1,8 @@
-from flask import render_template, url_for, flash, redirect
-from flask_practice_app import app
+from flask import render_template, url_for, flash, redirect, request
+from flask_practice_app import app, db, bcrypt
 from flask_practice_app.forms import RegistrationForm, LoginForm
 from flask_practice_app.models import User, Post
+from flask_login import login_user, current_user, logout_user, login_required
 
 posts = [
     {
@@ -23,24 +24,49 @@ def home():
 # add methods argument to allow certain request actions
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    
     # import specific form from forms
     form = RegistrationForm()
     # validate_on_submit method runs when form is submitted
     if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
         # data attribute signifies value of input field
         flash(f'Account created for {form.username.data}.', 'success')
         # redirect url should be for method name and not for route name
         # put url in string
-        return redirect(url_for('home'))
+        return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'thedaebu@gmail.com' and form.password.data == 'smakdown':
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
             flash(f'Account logged in for {form.email.data}.', 'success')
-            return redirect(url_for('home'))
+            # used for redirect directly to specific route page if route page was accessed without current user
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash(f'Log in unsuccessful', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+# add login_required decorator for a redirect that is established in __init__ file
+@app.route('/account')
+@login_required
+def account():
+    return render_template('account.html', title='Account')
