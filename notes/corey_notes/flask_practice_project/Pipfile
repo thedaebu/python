@@ -11,6 +11,7 @@ flask-sqlalchemy = "*"
 werkzeug = "*"
 flask-bcrypt = "*"
 flask-login = "*"
+pillow = "*"
 
 [dev-packages]
 

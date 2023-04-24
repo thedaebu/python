@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
     <header>
-        
         {% if current_user.is_authenticated %}
             <a href="{{ url_for('account') }}">Account Page</a>
             <a href="{{ url_for('logout') }}">Log Out</a>
