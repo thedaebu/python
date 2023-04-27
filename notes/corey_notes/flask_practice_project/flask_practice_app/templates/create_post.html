@@ -1,0 +1,36 @@
+{% extends "home.html" %}
+{% block content %}
+    <div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>{{ legend }}</legend>
+                <div class="form-group">
+                    {{ form.title.label }}
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div>
+                        {% for error in form.title.errors%}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.content.label }}
+                    {{ form.content }}
+                    {% if form.content.errors %}
+                    <div>
+                        {% for error in form.content.errors%}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

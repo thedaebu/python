@@ -1,6 +1,6 @@
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from flask_practice_app import app, db, bcrypt
-from flask_practice_app.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from flask_practice_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, NewPostForm
 from flask_practice_app.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
@@ -24,14 +24,14 @@ def home():
     # subsequent arguments are keys that could be used in the html template and extended templates
     if request.path == '/':
         return redirect(url_for('home'))
-    return render_template('home.html', title='Home', posts=posts)
+    return render_template('home.html', title='Home', posts=current_user.posts)
 
 # add methods argument to allow certain request actions
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    
+
     # import specific form from forms
     form = RegistrationForm()
     # validate_on_submit method runs when form is submitted
@@ -51,7 +51,7 @@ def register():
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    
+
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -103,3 +103,39 @@ def account():
     # apparently, if method is not found in current file, it looks in directory
     image_file = url_for('static', filename=current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
+
+@app.route('/post/new', methods=['GET', 'POST'])
+@login_required
+def post_new():
+    form = NewPostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, user_id=current_user.id)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been created', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', title='New Post', form=form, legend='New Post')
+
+@app.route("/post/<int:post_id>", methods=['GET'])
+@login_required
+def post_show(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', title=post.title, post=post)
+
+@app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
+@login_required
+def post_update(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    form = NewPostForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+        db.session.commit()
+        flash('Your post has been updated', 'success')
+        return redirect(url_for('post_show', post_id=post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('create_post.html', title=post.title, form=form, legend='Update Post')
