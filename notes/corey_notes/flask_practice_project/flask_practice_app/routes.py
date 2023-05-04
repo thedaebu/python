@@ -24,7 +24,10 @@ def home():
     # subsequent arguments are keys that could be used in the html template and extended templates
     if request.path == '/':
         return redirect(url_for('home'))
-    return render_template('home.html', title='Home', posts=current_user.posts)
+    posts = []
+    if current_user.is_authenticated:
+        posts = current_user.posts
+    return render_template('home.html', title='Home', posts=posts)
 
 # add methods argument to allow certain request actions
 @app.route('/register', methods=['GET', 'POST'])

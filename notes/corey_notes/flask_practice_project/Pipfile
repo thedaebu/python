@@ -12,6 +12,7 @@ werkzeug = "*"
 flask-bcrypt = "*"
 flask-login = "*"
 pillow = "*"
+itsdangerous = "*"
 
 [dev-packages]
 
