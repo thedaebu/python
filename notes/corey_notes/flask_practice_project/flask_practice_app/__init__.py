@@ -2,21 +2,39 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_mail import Mail
+from flask_practice_app.config import Config
 
-# configure flask app
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'd6753ab27f50e1f2c49228a7aebb4fc7'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_database.db'
-# configure database for flask app
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
 # establishes redirect route for routes that have login_required decorator and when not logged in
-login_manager.login_view = 'login'
+login_manager.login_view = 'users.login'
 # establishes message for login_view redirect
 login_manager.login_message_category = 'info'
+# e-mail notification configuration
+mail = Mail()
 
-from flask_practice_app import routes
+def create_app(config_class=Config):
+    # configure flask app
+    app = Flask(__name__)
+    # configure database for flask app
+    app.config.from_object(Config)
+
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    mail.init_app(app)
+
+    # these need to be imported after app variable initialization
+    from flask_practice_app.main.routes import main
+    from flask_practice_app.users.routes import users
+    from flask_practice_app.posts.routes import posts
+    app.register_blueprint(main)
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+
+    return app
 
 # has to be used for db commands
 # with app.app.context():
