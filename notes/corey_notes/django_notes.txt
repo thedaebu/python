@@ -1,8 +1,11 @@
+## often
+# python manage.py runserver
+    - runs app
+
+## seldom
 # python -m django --version
     - checks django version
 # django-admin
     - lists subcommands
 # django-admin startproject <project name>
     - sets up django files for new project
-# python manage.py runserver
-    - command to run app
