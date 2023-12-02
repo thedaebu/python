@@ -9,7 +9,7 @@
             app.run(debug=True)
         # python filename.py
     - in terminal
-        # export FLASK_DEBUG=1   
+        # export FLASK_DEBUG=1
         # flask run
 
 ## templates
