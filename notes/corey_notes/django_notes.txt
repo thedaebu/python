@@ -1,6 +1,55 @@
 ## often
 # python manage.py runserver
     - runs app
+# python manage.py startapp <name>
+    - creates app
+- app
+    - create urls.py for all urls for app
+    - add urls to main project urls.py files
+    - add templates/<app_name> directories for html templates
+    - add app class in apps.py to INSTALLED_APPS list in main project settings.py
+    - create html templates
+        - use block content
+        - extends base html
+        - for link locations, use name key for each url in urls.py
+    - create static folder in app folder
+        - load static in base html
+        - create folder of app name for all static files for that app
+- admin
+    # python manage.py createsuperuser
+    - import models into admin.py of app folder
+- migrations
+    # python manage.py makemigrations
+        - prepares migrations
+    # python manage.py migrate
+- models
+    - each model class take argument of models.Model
+    - model relations
+        # models.ForeignKey
+- sql
+    # python manage.py sqlmigrate <app_name> <migration_number>
+        - displays sql command for migration
+    # python manage.py shell
+        - runs console for app database
+        - model commands
+            # <model>.objects.all()
+            # <model>.objects.query(<condition>)
+                - returns list
+            # <model>.objects.get(<unique_condition>)
+                - returns single object
+            # <created_model_object>.save()
+            # <model_object>.<association_model>_set
+                - references all the associated entries of an object according
+                the model
+                - using create method with model_set doesn't require foreign
+                key argument
+- settings
+    - add login redirect url
+    # LOGIN_REDIRECT_URL = <desired route name after logging in>
+    # LOGIN_URL = <login route name>
+- signals
+    - functionality definitions when a model is handled
+    - recommended to keep separately from model file
 
 ## seldom
 # python -m django --version
